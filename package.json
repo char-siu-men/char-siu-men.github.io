@@ -1,0 +1,12 @@
+{
+  "name": "my_awesome_site",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.8.0",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^1.2.2",
+    "gulp-imagemin": "^3.1.1",
+    "imagemin-pngquant": "^5.0.0"
+  }
+}

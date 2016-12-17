@@ -1,0 +1,25 @@
+---
+layout: recent-articles
+title: "ブログ"
+description: "Altus-Five（アルタスファイブ）は、長きにわたって培ってきた「確かな技術」「数多くの経験」を力に、みなさまの開発案件をトータルにお手伝いをするシステム開発会社です。数多くの現場に携わってきた私たちは、各社ごとそれぞれに最適な開発のサポートをお約束します。"
+---
+<div id="low_page" class="wrap_all">
+  <h1 class="page__title w_const"><span class="en">BLOG</span><span class="jp">ブログ</span></h1>
+  <article id="blog" class="article">
+    <div class="article__conts w_const">
+      <div class="posts">
+        <ul class="posts-list">
+          {% for post in site.posts %}
+            <li class="post-link">
+              <a class="post-title" href="{{ post.url }}">
+                <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                {{ post.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+  </article>
+</div>

@@ -1,0 +1,25 @@
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>{{ site.name }} | {{ page.title }}</title>
+<meta name="description" content="{{ page.description }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:description" content="{{ page.description }}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:image" content="{{ site.url }}{% asset_path ogp.png %}">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="{{ page.description }}">
+<meta name="twitter:image" content="{{ site.url }}{% asset_path ogp.png %}">
+
+<link rel="apple-touch-icon" sizes="180x180" href="{% asset_path apple_touch_icon180x180.png %}">
+<link rel="apple-touch-icon" sizes="152x152" href="{% asset_path apple_touch_icon152x152.png %}">
+<link rel="apple-touch-icon" sizes="120x120" href="{% asset_path apple_touch_icon120x120.png %}">
+<link rel="apple-touch-icon" sizes="76x76" href="{% asset_path apple_touch_icon76x76.png %}">
+
+{% stylesheet common %}

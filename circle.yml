@@ -1,0 +1,22 @@
+machine:
+  environment:
+    USER_NAME: a5-receptionist
+    USER_EMAIL: receptionist@altus5.com
+  ruby:
+    version: 2.3.1
+
+dependencies:
+  pre:
+    - sh ./bin/setup
+
+test:
+  post:
+    - bundle exec jekyll build
+   #- bundle exec htmlproofer ./_site --only-4xx --allow-hash-href
+    - gulp
+
+deployment:
+  production:
+    branch: draft
+    commands:
+      - sh ./bin/automated

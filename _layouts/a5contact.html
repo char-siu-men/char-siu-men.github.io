@@ -1,0 +1,23 @@
+<!doctype html>
+<html dir="ltr" lang="ja">
+<head>
+  {% include head.html %}
+  {% stylesheet a5contact %}
+</head>
+<body>
+  {% include gtm.html %}
+  <!--[if lt IE 9]>
+    <p class="browserupgrade">
+      <strong>古い</strong>ブラウザがご使用されています。
+      お問い合わせの送信ができませんので、<a href="http://browsehappy.com/">新しいブラウザにアップグレード</a>してください。
+    </p>
+  <![endif]-->
+
+  {{ content }}
+
+  {% include footer.html %}
+  {% include header.html %}
+  {% include javascripts.html %}
+  {% javascript a5contact %}
+</body>
+</html>

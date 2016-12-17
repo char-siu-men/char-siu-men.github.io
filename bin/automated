@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Automated deploy script with Circle CI.
+
+# Exit if any subcommand fails.
+set -e
+
+# Variables
+ORIGIN_URL=`git config --get remote.origin.url`
+
+echo "Started deploying"
+
+git config user.name "$USER_NAME"
+git config user.email "$USER_EMAIL"
+
+# Checkout master branch.
+mkdir -p _site
+cd _site
+cp -ar ../.git .
+git reset --hard
+git checkout master
+find . -maxdepth 1 ! -name '.' ! -name '.git' -exec rm -rf {} \;
+cd ..
+  
+# Build site.
+bower install
+bundle exec jekyll build
+gulp
+
+# Push to master.
+cd _site
+git add -fA
+git commit --allow-empty -m "$(git log -1 --pretty=%B) [ci skip]"
+git push -f $ORIGIN_URL master
+
+echo "Deployed Successfully!"
+
+exit 0
