@@ -27,6 +27,7 @@ exclude:
   - gulpfile.js
   - package.json
   - node_modules
+  - assets/.sprockets*
 
 ga_analytics: # Add Google Analytics tracking code
 
