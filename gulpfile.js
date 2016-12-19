@@ -12,7 +12,7 @@ gulp.task('imagemin', function() {
   var dstGlob = paths.dstDir;
   var imageminOptions = [
     pngquant({
-      quality: '60-80',
+      quality: '60',
       speed: 1
     })
   ];
