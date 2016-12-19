@@ -20,6 +20,31 @@ $(function() {
       map: map
     });
   }
+  new Layzr()
+    .on('src:before', function(element) {
+      if ($(element).hasClass('loader_m')) {
+        var width = $(element).width();
+        $(element).parent().css({
+          'background-image': $(element).data('loading'),
+          'background-position': 'center center',
+          'background-repeat': 'no-repeat',
+          'background-color': '#000',
+          'min-height': parseInt(width*0.5) + 'px'
+        });
+      }
+    })
+    .on('src:after', function(element) {
+      if ($(element).hasClass('loader_m')) {
+        $(element).parent().css({
+          'background-image': '',
+          'background-color': '',
+          'min-height': ''
+        });
+      }
+    })
+    .update()
+    .check()
+    ;
   if ($('#gmap').length > 0) {
     initialize();
   }
