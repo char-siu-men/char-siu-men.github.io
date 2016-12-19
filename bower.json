@@ -4,6 +4,7 @@
     "jquery": "~3.1.1",
     "moment": "^2.17.1",
     "jquery.validate": "https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.1/jquery.validate.js",
-    "history.adapter.jquery.min": "https://cdnjs.cloudflare.com/ajax/libs/history.js/1.8/compressed/history.adapter.jquery.min.js"
+    "history.adapter.jquery.min": "https://cdnjs.cloudflare.com/ajax/libs/history.js/1.8/compressed/history.adapter.jquery.min.js",
+    "webfontloader": "^1.6.27"
   }
 }

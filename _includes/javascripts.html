@@ -1,2 +1,46 @@
 {% javascript vendor %}
+<script type="text/javascript">
+$(function() {
+  var orgFontFamily = $('body').css('font-family');
+  $('body').css({'font-family': "'Helvetica', 'Arial', 'メイリオ', 'Meiryo', 'MS  PGothic', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', sans-serif"});
+  WebFont.load({
+    google: {
+      families: [
+        "PT Sans Narrow:n4,n7"
+      ]
+    },
+    custom: {
+      families: [
+        "Noto Sans Japanese:n4,n7",
+        "PT Sans Narrow:n4,n7"
+      ],
+      urls: [
+        "https://fonts.googleapis.com/earlyaccess/notosansjapanese.css"
+      ]
+    },
+    timeout: 3000,
+    loading: function() {
+      // ロードしているとき allfonts
+    },
+    active: function() {
+      // Web Fontが使用可能になったとき allfonts
+    },
+    inactive: function() {
+      // ブラウザがサポートしていないとき allfonts
+    },
+    fontloading: function(fontFamily, fontDescription) {
+      // fontFamilyをロードしているとき onefont
+    },
+    fontactive: function(fontFamily, fontDescription) {
+      // fontFamilyが使用可能になったとき onefont
+      if ('Noto Sans Japanese' === fontFamily) {
+        $('body').css({'font-family': orgFontFamily});
+      }
+    },
+    fontinactive: function(fontFamily, fontDescription) {
+      // fontFamilyをブラウザがサポートしていないとき onefont
+    }
+  });
+});
+</script>
 {% javascript common %}
