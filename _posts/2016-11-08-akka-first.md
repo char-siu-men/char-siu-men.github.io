@@ -3,6 +3,8 @@ layout: post
 title:  "並行処理時代を切り拓くActorモデル Akka"
 date:   2016-11-08 15:11:44 +0000
 categories: blog akka
+tags:
+  - プログラミング技術総覧
 ---
 
 ## 並行処理の弱点を解消するActorモデル
