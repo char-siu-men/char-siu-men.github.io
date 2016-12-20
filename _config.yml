@@ -39,4 +39,16 @@ name: ALTUS-FIVE
 
 permalink: pretty
 
-url: # Add your site url
+url: "https://www.altus5.io"
+
+sitemap:
+    file: "/sitemap.xml"
+    exclude:
+        - "/atom.xml"
+        - "/feed.xml"
+        - "/feed/index.xml"
+        - "/404.html"
+    include_posts:
+        - "/index.html"
+    change_frequency_name: "monthly"
+    priority_name: "0.5"
