@@ -20,31 +20,32 @@ $(function() {
       map: map
     });
   }
-  new Layzr()
-    .on('src:before', function(element) {
-      if ($(element).hasClass('loader_m')) {
-        var width = $(element).width();
-        $(element).parent().css({
-          'background-image': $(element).data('loading'),
-          'background-position': 'center center',
-          'background-repeat': 'no-repeat',
-          'background-color': '#000',
-          'min-height': parseInt(width*0.5) + 'px'
-        });
-      }
-    })
-    .on('src:after', function(element) {
-      if ($(element).hasClass('loader_m')) {
-        $(element).parent().css({
-          'background-image': '',
-          'background-color': '',
-          'min-height': ''
-        });
-      }
-    })
-    .update()
-    .check()
-    ;
+  // イメージの遅延ロード
+  $('.loader_m').each(function() {
+    var $element = $(this);
+    var $figure = $element.parent();
+    var width = $element.width();
+    $figure.css({
+      'background-image': 'url(' + $element.data('loading') + ')',
+      'background-position': 'center center',
+      'background-repeat': 'no-repeat',
+      'background-color': '#000',
+      'min-height': parseInt(width*0.5) + 'px'
+    });
+    var $img = $('<img src="' + $element.data('normal') + '"/>');
+    $img.hide();
+    $img.bind('load', function() {
+      $figure.append($img);
+      $element.remove();
+      $img.show();
+      $figure.css({
+        'background-image': '',
+        'background-color': '',
+        'min-height': ''
+      });
+    });
+  });
+  // 地図の表示
   if ($('#gmap').length > 0) {
     initialize();
   }
