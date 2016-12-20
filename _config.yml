@@ -12,7 +12,7 @@ assets:
     - _assets/stylesheets
     - _vendor/
 
-baseurl: /
+baseurl: 
 
 exclude:
   - .bowerrc
@@ -39,7 +39,7 @@ name: ALTUS-FIVE
 
 permalink: pretty
 
-url: "https://www.altus5.io"
+url: "https://www.altus5.io/"
 
 sitemap:
     file: "/sitemap.xml"
@@ -50,5 +50,5 @@ sitemap:
         - "/404.html"
     include_posts:
         - "/index.html"
-    change_frequency_name: "monthly"
+    change_frequency_name: "daily"
     priority_name: "0.5"
