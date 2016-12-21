@@ -24,25 +24,14 @@ $(function() {
   $('.loader_m').each(function() {
     var $element = $(this);
     var $figure = $element.parent();
-    var width = $element.width();
-    $figure.css({
-      'background-image': 'url(' + $element.data('loading') + ')',
-      'background-position': 'center center',
-      'background-repeat': 'no-repeat',
-      'background-color': '#000',
-      'min-height': parseInt(width*0.5) + 'px'
-    });
+    var $loader = $figure.find('svg');
     var $img = $('<img src="' + $element.data('normal') + '"/>');
     $img.hide();
     $img.bind('load', function() {
+      $loader.remove();
       $figure.append($img);
       $element.remove();
       $img.show();
-      $figure.css({
-        'background-image': '',
-        'background-color': '',
-        'min-height': ''
-      });
     });
   });
   // 地図の表示
