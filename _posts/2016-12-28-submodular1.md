@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "ソーシャルマーケティングシステムを単純なアルゴリズムで実装する - 劣モジュラ最適化と貪欲法"
-date:   2016-12-22 10:00:00 +0900
+date:   2016-12-28 10:00:00 +0900
 categories: blog machine-learning
 tags:
   - プログラミング技術総覧
