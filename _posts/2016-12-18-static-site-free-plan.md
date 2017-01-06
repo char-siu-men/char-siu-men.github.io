@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "静的サイトを動的ページ化する - 無料枠でどこまでできる？"
+title:  "静的サイトを動的ページ化する - 無料サービスでどこまでできる？"
 date:   2016-12-18 10:00:00 +0900
 categories: blog static-site
 tags:
