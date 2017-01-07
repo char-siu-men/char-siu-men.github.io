@@ -17,6 +17,7 @@ git config user.email "$USER_EMAIL"
 mkdir -p _site
 cd _site
 cp -ar ../.git .
+find . -maxdepth 1 ! -name '.' ! -name '.git' -exec rm -rf {} \;
 git reset --hard
 git checkout master
 find . -maxdepth 1 ! -name '.' ! -name '.git' -exec rm -rf {} \;
