@@ -3,5 +3,6 @@
 
 @import "blog/main";
 @import "blog/responsive";
-@import "blog/syntax";
+//@import "blog/syntax";
 @import "blog/scout";
+@import "//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/github.min.css";

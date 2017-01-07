@@ -3,4 +3,5 @@
 //= require moment/moment
 //= require jquery.validate
 //= require history.adapter.jquery.min
+//= require highlight/src/highlight
 

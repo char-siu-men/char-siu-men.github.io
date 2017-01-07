@@ -13,7 +13,7 @@ tags:
 できたとしても、親子の入れ子構造にすると、イメージが肥大化するので、兄弟関係で、動かした方がいいんだろうな・・・ということは、なんとなく想像がつくので、コンテナ間で、 docker exec できないものか？と調べてみる・・・。
 
 そして、Dockerコンテナの中で、Docker Clientは、動くらしくて、ホストOSにある /var/run/docker.sock を共有することで、コンテナ内で、ホストOS側の Docker Client と同じ実行結果になることがわかった。  
-http://qiita.com/minamijoyo/items/c937fb4f646dc1ff064a
+<http://qiita.com/minamijoyo/items/c937fb4f646dc1ff064a>
 
 ただし、このやり方は、セキュリティ的にリスクがあると警告しているので、本番用には使わないことにした方が良さそうだ。  
 
