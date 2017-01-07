@@ -41,6 +41,9 @@ ARTICLE
       img {
         width: 100%;
         min-width: $front_const_width;
+        background-image: url("loader.gif");
+        background-repeat: no-repeat;
+        background-position: center;
       }
     }
     .inr {

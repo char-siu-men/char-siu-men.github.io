@@ -21,17 +21,15 @@ $(function() {
     });
   }
   // イメージの遅延ロード
-  $('.loader_m').each(function() {
+  $('.lazy_loader').each(function() {
     var $element = $(this);
     var $figure = $element.parent();
-    var $loader = $figure.find('svg');
-    var $img = $('<img src="' + $element.data('normal') + '"/>');
-    $img.hide();
-    $img.bind('load', function() {
-      $loader.remove();
-      $figure.append($img);
+    var $lazyImg = $('<img src="' + $element.data('normal') + '"/>');
+    $lazyImg.hide();
+    $lazyImg.bind('load', function() {
+      $figure.append($lazyImg);
       $element.remove();
-      $img.show();
+      $lazyImg.show();
     });
   });
   // 地図の表示

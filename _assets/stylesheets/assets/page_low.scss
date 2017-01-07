@@ -126,6 +126,11 @@ RECRUIT
     .image {
       position: absolute;
       top: 0;
+      img {
+        background-image: url("loader.gif");
+        background-repeat: no-repeat;
+        background-position: center;
+      }
     }
   }
   .article__title {

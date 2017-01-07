@@ -13,8 +13,10 @@ description: "Altus-Five（アルタスファイブ）は、長きにわたっ�
   <article id="r_messege" class="article">
     <div class="image_box w_const">
       <figure class="image">
-        <img class="loader_m" data-normal="{% asset_path recruit_main.png %}" alt=""/>
-        {% include loader.svg %}
+        <img class="lazy_loader"
+          src="{% asset_path 15x8.png %}" 
+          data-normal="{% asset_path recruit_main.png %}" 
+          alt=""/>
       </figure>
     </div>
     <h1 class="article__title w_const">MESSEGE</h1>
