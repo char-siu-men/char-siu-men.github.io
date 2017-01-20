@@ -1,5 +1,5 @@
 {% if page.title %}
-  {% assign title = site.name | append: ' | ' | append: page.title %}
+  {% assign title = page.title | append: ' | ' | append: site.name %}
 {% else %}
   {% assign title = site.name %}
 {% endif %}
