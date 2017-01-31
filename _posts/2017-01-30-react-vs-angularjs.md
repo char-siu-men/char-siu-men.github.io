@@ -289,7 +289,7 @@ System.jsを利用すると、大量の`<script>`タグを書かずに済み、�
 System.import('app').catch(function(err){ console.error(err); });
 ```
 
-先ほど説明したように、<my-app>というタグ内にコンポーネントが表示されます。
+先ほど説明したように、`<my-app>`というタグ内にコンポーネントが表示されます。
 
 ```
 <body>
@@ -730,20 +730,27 @@ import {TodoFooterComponent} from './components/footer/footer.component';
 * DIを利用しているのでそれぞれのクラスの依存度が少ない
 * TypeScriptで書けるので、記述量少なく保守性の高いソースコードを書くことができる
 
-## 参考（執筆過程で参考にしたものです。編集担当者の確認用としてご覧ください）
+## 参考
 
-【βリリース記念】5分でわかる！Angular 2のススメ   <https://html5experts.jp/canidoweb/18001/>  
+【βリリース記念】5分でわかる！Angular 2のススメ  
+<https://html5experts.jp/canidoweb/18001/>  
 
-他のフレームワークとの比較(vue.js)  <https://jp.vuejs.org/v2/guide/comparison.html>  
+他のフレームワークとの比較(vue.js)   
+<https://jp.vuejs.org/v2/guide/comparison.html>  
 
-VPSサーバーでWebサイト公開　備忘録　~Linux、MySQLからAJAXまで  <http://wordpress.honobono-life.info/code/angular2%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%80%81bootstrap%E9%96%A2%E6%95%B0%E3%81%AE%E6%A6%82%E8%A6%81/>  
+VPSサーバーでWebサイト公開　備忘録　~Linux、MySQLからAJAXまで  
+<http://wordpress.honobono-life.info/code/angular2%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%80%81bootstrap%E9%96%A2%E6%95%B0%E3%81%AE%E6%A6%82%E8%A6%81/>  
 
-「Angular 2」の構成単位「コンポーネント」「モジュール」を使いこなそう  <https://codezine.jp/article/detail/9700>  
+「Angular 2」の構成単位「コンポーネント」「モジュール」を使いこなそう  
+<https://codezine.jp/article/detail/9700>  
 
-SystemJS入門  <http://minotaur.badwitch.io/getting-started-with-systemjs/>  
+SystemJS入門  
+<http://minotaur.badwitch.io/getting-started-with-systemjs/>  
 
-Dolpenの日記  <http://dolpen.hatenablog.com/entry/2016/04/25/201343>  
+Dolpenの日記  
+<http://dolpen.hatenablog.com/entry/2016/04/25/201343>  
 
-Angular 2のLifecycle Hooksを理解する   <http://blog.yuhiisk.com/archive/2016/05/02/angular2-lifecycle-hooks.html>  
+Angular 2のLifecycle Hooksを理解する  
+<http://blog.yuhiisk.com/archive/2016/05/02/angular2-lifecycle-hooks.html>  
 
 
