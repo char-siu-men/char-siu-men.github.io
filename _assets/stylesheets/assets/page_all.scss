@@ -29,7 +29,7 @@ ALL CONTS
     min-width: $low_const_width;
   }
 }
-#header, #footer {
+#_header, #_footer {
   min-width: $front_const_width;
   .w_const {
     width: $front_const_width;
@@ -104,7 +104,7 @@ BUTTON
 /*
 HEADER
 */
-#header {
+#_header {
   position: fixed;
   top: 0;
   width: 100%;
@@ -166,7 +166,7 @@ WRAP ALL
 /*
 FOOTER
 */
-#footer {
+#_footer {
   background: $base_color01;
   padding: 30px 0;
   .content01 {
