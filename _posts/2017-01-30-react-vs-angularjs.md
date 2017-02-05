@@ -4,7 +4,7 @@ title:  "React vs AngularJS それぞれの利点と特徴"
 date:   2017-01-30 18:11:44 +0900
 categories: blog AngularJS React
 tags:
-  - プログラミング技術総覧
+  - プログラミング技術総覧 AngularJS React
 ---
 ## React or Angular 2 ー どちらを使うべきか
 
