@@ -18,7 +18,7 @@ tags:
 リアクティブプログラミングを志向していることが、Reactという名前の所以です。
 リアクティブプログラミングについては、過去記事で解説していますので、ご参照ください。
 
-[・リアクティブプログラミングの概観と、各言語での実装について](https://www.altus5.co.jp/blog/reactive-programming/2016/11/17/reactive-programming/)
+[リアクティブプログラミングの概観と、各言語での実装について](https://www.altus5.co.jp/blog/reactive-programming/2016/11/17/reactive-programming/)
 
 ### JSXによる、仮想DOM(Virtual DOM)を用いた実装
 
@@ -126,8 +126,8 @@ src以下にアプリケーションのソースコードを配置していき�
 
 以下のpackage.jsonを用意します。今回はwebpackとBabelを使用して作業を進めていきます。
 
-
-```package.json
+package.json
+```
 {
   "name": "flux todo",
   "version": "1.0.0",
@@ -181,7 +181,8 @@ $ npm build
 
 初めはindex.htmlを作成します。webpackを使用してビルドしており、`bundle.js`が最終的に作成されます。index.html内ではそれを読み込んでいます。
 
-```index.html
+index.html
+```
 <!doctype html>
 <html lang="en">
   <head>
@@ -207,7 +208,8 @@ Reactが関連している記述は`section`というタグです。
 
 package.jsonに、buildコマンドとして`webpack ./src/root.js ./bundle.js`と指定しています。そのためsrc/root.jsが最初に読み込まれるようになっています。
 
-```src/root.js
+src/root.js
+```
 import AppContainer from './containers/AppContainer';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -224,7 +226,8 @@ ReactDOM.render(<AppContainer />, document.getElementById('todoapp'));
 
 Store、Action、ViewなどをまとめるContainerを作成します。
 
-```/src/containers/AppContainer.js
+/src/containers/AppContainer.js
+```
 import AppView from '../views/AppView';
 import {Container} from 'flux/utils';
 import TodoStore from '../data/TodoStore';
@@ -351,8 +354,8 @@ addTodo(text) {
 
 ActionではStoreに渡すべきtypeと、引数であるstateを渡します。各タイプについては、`src/data/TodoActionTypes.js`にenumのように定義しておくと、どのようなActionかが一目でわかり、管理しやすくなります。
 
-
-```src/data/TodoActionTypes.js
+src/data/TodoActionTypes.js
+```
 const ActionTypes = {
   ADD_TODO: 'ADD_TODO',
   DELETE_TODO: 'DELETE_TODO',
@@ -371,7 +374,8 @@ export default ActionTypes;
 	* MVCでいうならModel的な役割
 </q>
 
-```src/data/TodoStore.js
+src/data/TodoStore.js
+```
 import Counter from './Counter';
 import Immutable from 'immutable';
 import {ReduceStore} from 'flux/utils';
@@ -452,7 +456,8 @@ ReduceStoreは、facebook/flux 2.1.0から加わった、Flux Utilsに含まれ�
 ReduceStoreは、自身の状態の変更をContainerに自動で反映することができます。
 （2.1.0以前はevent emitterを使用して、プログラマが自分で通知のソースコードを書いていました）
 
-```src/data/TodoActions.js
+src/data/TodoActions.js
+```
 export default Container.createFunctional(AppView, getStores, getState);
 ```
 
@@ -467,7 +472,8 @@ export default Container.createFunctional(AppView, getStores, getState);
 	* facebook/fluxはこの機能のみ提供している
 </q>
 
-```src/data/TodoDispatcher.js
+src/data/TodoDispatcher.js
+```
 import {Dispatcher} from 'flux';
 
 export default new Dispatcher();
@@ -518,7 +524,8 @@ Actionを作成し、Dispatcherが用意できれば同じようなStoreは簡�
 
 ToDoリストそのものを表すオブジェクトを作成します。属性を定義したクラスを用意するだけです。
 
-```src/data/Todo.js
+src/data/Todo.js
+```
 import Immutable from 'immutable';
 
 const Todo = Immutable.Record({
@@ -662,7 +669,8 @@ Reactにはデータを管理する変数が2つあり、非常に混乱しや�
 		* コンポーネントからコンポーネントへは渡されない
 	* stateは可変であるべき
 
-```src/containers/AppContainer.js
+src/containers/AppContainer.js
+```
 export default Container.createFunctional(AppView, getStores, getState);
 ```
 
@@ -762,7 +770,8 @@ const onChange = (event) => props.onUpdateDraft(event.target.value);
 
 タスクの登録はheaderコンポーネントで行います。ここで入力中のToDoを管理するTodoDraftStore(props.draft)が使用されています。
 
-```src/data/TodoStore.js
+src/data/TodoStore.js
+```
 return state.set(id, new Todo({
   id,
   text: action.text,
@@ -869,7 +878,8 @@ export default Container.createFunctional(AppView, getStores, getState);
 
 あとは`src/containers/AppContainer.js`でコンテナに登録し、
 
-```src/root.js
+src/root.js
+```
 import AppContainer from './containers/AppContainer';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -880,7 +890,7 @@ ReactDOM.render(<AppContainer />, document.getElementById('todoapp'));
 root.jsにReactDOM.renderを定義します。
 
 
-```HTML
+```
 <section id="todoapp"></section>
 ```
 
@@ -903,7 +913,8 @@ Angularは、Angular 2以降コンポーネント指向になりました。こ�
 
 Angular 2は@NgModule内でコンポーネントを定義しています。
 
-```app/app.module.ts
+app/app.module.ts
+```
 declarations: [
 	AppComponent,
 	TodoHeaderComponent,
@@ -916,7 +927,8 @@ declarations: [
 
 ReactはAppViewでコンポーネントを定義しています。
 
-```src/views/AppView.js
+src/views/AppView.js
+```
 function AppView(props) {
   return (
     <div>
@@ -944,7 +956,8 @@ Reactと併用できるFluxのフレームワークは多数あり、組み合�
 
 今回のコードでは、`src/views/AppView.js`内のHeaderコンポーネントに記載されています。
 
-```src/views/AppView.js
+src/views/AppView.js
+```
 const ENTER_KEY_CODE = 13;
 function Header(props) {
 
@@ -974,7 +987,8 @@ function Header(props) {
 
 Angular 2がHTMLファイルに記載するのに対し、ReactはJSXを使用しているので、この点が大きく違います。
 
-```app/components/header/header.component.ts
+app/components/header/header.component.ts
+```
 import {Component} from '@angular/core';
 import {TodoService} from '../../services/todo.service';
 
@@ -997,7 +1011,8 @@ export class TodoHeaderComponent {
 }
 ```
 
-```header.html
+header.html
+```
 <header class="well">
   <h1>Todos</h1>
   <form class="form-inline">
