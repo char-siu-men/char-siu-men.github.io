@@ -296,12 +296,10 @@ export default Container.createFunctional(AppView, getStores, getState);
 
 ### Actionの作成（src/data/TodoActions.js）
 
-<q>
 * Action
 	* UIをクリックしたり、HTTPリクエストが届いたときなどの非同期イベントが発生すると呼ばれる
 	* 各イベントの動作を決定
 		* Storeにそれをメッセージとして伝える
-</q>
 
 ```
 import TodoActionTypes from './TodoActionTypes';
@@ -368,11 +366,9 @@ export default ActionTypes;
 
 ### Storeの作成(src/data/TodoStore.js)
 
-<q>
 * Store
 	* データをためる場所
 	* MVCでいうならModel的な役割
-</q>
 
 src/data/TodoStore.js
 ```
@@ -466,11 +462,9 @@ export default Container.createFunctional(AppView, getStores, getState);
 
 ### src/data/TodoDispatcher.js
 
-<q>
 * Dispatcher
 	* ActionからStoreへいくための橋渡し
 	* facebook/fluxはこの機能のみ提供している
-</q>
 
 src/data/TodoDispatcher.js
 ```
@@ -544,11 +538,9 @@ immutable.jsはFacebook, Inc.が開発したJavaScriptのライブラリで、im
 
 ### Viewの作成(src/views/AppView.js)
 
-<q>
 * View
 	* 主にreactがviewの役目になる
 	* 他のフレームワークでも代用可能
-</q>
 
 ```
 import React from 'react';
