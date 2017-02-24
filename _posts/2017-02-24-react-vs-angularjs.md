@@ -8,7 +8,6 @@ tags:
   - AngularJS
   - React
 ---
-# AngularJS vs React それぞれの利点と特徴（React編）
 
 「AngularJS vs React」前回のAngular編では、Angular 2でToDoツールを作成していきました。今回は、Reactを用いて同様の機能を持ったToDoツールを作成することで、両者の特徴を明確にしたいと思います。
 
