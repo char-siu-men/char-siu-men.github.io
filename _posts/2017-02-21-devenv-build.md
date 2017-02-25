@@ -3,7 +3,10 @@ layout: post
 title:  "開発環境を素早く構築する - 自社内での開発に欠かせないスキル"
 date:   2017-02-21 10:00:00 +0900
 categories: blog altus5
+description: "プロジェクトの立ち上がりをスムーズにキメるためには、開発環境の整備が、欠かせません。"
 tags:
+  - Vagrant
+  - Docker
   - 環境構築
 ---
 
