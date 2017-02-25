@@ -3,8 +3,8 @@ layout: post
 title:  "if else nested hell を回避する3つの方法"
 date:   2017-02-25 10:00:00 +0900
 categories: blog programming
-tags:
-  - プログラミング
+description: "callback hell とか、最近では、Promise hell なんてのも、よく見聞きします。もっと、古いところでは、 if else の中に if-else が入れ子で入ってしまう、地獄がありました。この問題の回避方法をご紹介します。"
+tags: ["プログラミング"]
 ---
 
 callback hell とか、最近では、Promise hell なんてのも、よく見聞きします。  
