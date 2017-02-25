@@ -4,10 +4,7 @@ title:  "React vs AngularJS それぞれの利点と特徴（React編）"
 date:   2017-02-24 10:11:44 +0900
 categories: blog AngularJS React
 description: "「React.js」と「AngularJS」のフレームワークで同じツールを作成し、実装過程と成果物を比較して、両者のフレームワークの良いところ・悪いところを検証したいと思います。（React編）"
-tags:
-  - プログラミング技術総覧
-  - AngularJS
-  - React
+tags: ["プログラミング技術総覧", "AngularJS", "React"]
 ---
 
 「AngularJS vs React」前回のAngular編では、Angular 2でToDoツールを作成していきました。今回は、Reactを用いて同様の機能を持ったToDoツールを作成することで、両者の特徴を明確にしたいと思います。

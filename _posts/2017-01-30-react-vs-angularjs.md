@@ -4,10 +4,7 @@ title:  "React vs AngularJS それぞれの利点と特徴（Angular編）"
 date:   2017-01-30 18:11:44 +0900
 categories: blog AngularJS React
 description: "「React.js」と「AngularJS」のフレームワークで同じツールを作成し、実装過程と成果物を比較して、両者のフレームワークの良いところ・悪いところを検証したいと思います。（Angular編）"
-tags:
-  - プログラミング技術総覧
-  - AngularJS
-  - React
+tags: ["プログラミング技術総覧", "AngularJS", "React"]
 ---
 ## React or Angular 2 ー どちらを使うべきか
 

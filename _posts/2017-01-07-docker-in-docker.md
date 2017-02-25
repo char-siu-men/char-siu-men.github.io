@@ -4,9 +4,7 @@ title:  "Docker コンテナ内から他の Docker コンテナに docker exec �
 date:   2017-01-07 10:00:00 +0900
 categories: blog docker
 description: "Dockerコンテナの中で、Docker Clientは、動くらしくて、ホストOSにある /var/run/docker.sock を共有することで、コンテナ内で、ホストOS側の Docker Client と同じ実行結果になることがわかった。"
-tags:
-  - Docker
-  - 環境構築
+tags: ["環境構築", "Docker"]
 ---
 フロントエンドの開発環境を整備すべく、 nodejs と ruby が入ったコンテナがないかな？と探したのだけど、オフィシャルなイメージとしては、nodeのコンテナと、rubyのコンテナが、それぞれ単体では存在するが、両方が載っているものがなかったので、オフィシャルじゃないイメージを使うことにした。
 
