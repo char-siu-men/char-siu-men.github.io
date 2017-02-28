@@ -4,6 +4,8 @@ machine:
     USER_EMAIL: receptionist@altus5.com
   ruby:
     version: 2.3.1
+  timezone:
+    Asia/Tokyo
 
 dependencies:
   pre:
