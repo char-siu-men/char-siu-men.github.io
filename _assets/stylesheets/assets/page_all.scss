@@ -5,7 +5,7 @@
 /*
 ALL CONTS
 */
-#front_page {
+#front_page, #blog_page {
   .w_const {
     width: $front_const_width;
     margin: 0 auto;
@@ -39,7 +39,7 @@ ALL CONTS
   }
 }
 //TITLE
-#front_page .article, #low_page .page {
+#front_page .article, #blog_page .article, #low_page .page {
   &__title {
     text-align: center;
     line-height: 1;

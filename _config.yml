@@ -34,6 +34,7 @@ ga_analytics: # Add Google Analytics tracking code
 gems:
   - jekyll-assets
   - jekyll-sitemap
+  - jekyll-archives
 
 name: ALTUS-FIVE
 
@@ -51,3 +52,14 @@ sitemap:
         - "/index.html"
     change_frequency_name: "daily"
     priority_name: "0.5"
+
+jekyll-archives:
+  enabled:
+    - tags
+  layout: 'archive'
+  permalinks:
+    year: '/blog/:year/'
+    month: '/blog/:year/:month/'
+    day: '/blog/:year/:month/:day/'
+    tag: '/blog/tag/:name/'
+    category: '/blog/category/:name/'

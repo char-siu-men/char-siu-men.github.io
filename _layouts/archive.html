@@ -1,0 +1,46 @@
+<!doctype html>
+<html dir="ltr" lang="ja">
+<head>
+  {% assign title = page.title | append:' | ブログ' %}
+  {% assign description = 'アルタスファイブのブログから、"' | append:page.title | append:'"タグの記事をご紹介します。' %}
+  {% include head.html title=title description=description %}
+  {% stylesheet blog %}
+</head>
+<body>
+  {% include gtm.html %}
+  <!--[if lt IE 9]>
+    <p class="browserupgrade">
+      <strong>古い</strong>ブラウザをご使用されています。
+      本サイトを快適に閲覧頂くために、<a href="http://browsehappy.com/">新しいブラウザにアップグレード</a>してください。
+    </p>
+  <![endif]-->
+  {% include header.html %}
+
+  <div id="low_page" class="wrap_all">
+    <h1 class="page__title w_const"><span class="en">BLOG</span><span class="jp">ブログ</span></h1>
+    <section class="page__lead  w_const input_container">
+      <span>"{{page.title}}" タグの記事です。</span>
+    </section>
+    <article id="blog" class="article">
+      <div class="article__conts w_const">
+        <div class="posts">
+          <ul class="posts-list">
+            {% for post in page.posts %}
+              <li class="post-link">
+                <a class="post-title" href="{{ post.url }}">
+                  <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                  {{ post.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+      </div>
+    </article>
+  </div>
+
+  {% include footer.html %}
+  {% include javascripts.html %}
+</body>
+</html>

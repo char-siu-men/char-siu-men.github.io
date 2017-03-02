@@ -1,8 +1,12 @@
 {% javascript vendor %}
 <script type="text/javascript">
 $(function() {
-  var orgFontFamily = $('body').css('font-family');
-  $('body').css({'font-family': "'Helvetica', 'Arial', 'メイリオ', 'Meiryo', 'MS  PGothic', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', sans-serif"});
+  var fout = false;
+  var orgFontFamily;
+  if (fout) {
+    var orgFontFamily = $('body').css('font-family');
+    $('body').css({'font-family': "'Helvetica', 'Arial', 'メイリオ', 'Meiryo', 'MS  PGothic', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', sans-serif"});
+  }
   WebFont.load({
     google: {
       families: [
@@ -29,8 +33,10 @@ $(function() {
     },
     fontactive: function(fontFamily, fontDescription) {
       // fontFamilyが使用可能になったとき onefont
-      if ('Noto Sans Japanese' === fontFamily) {
-        $('body').css({'font-family': orgFontFamily});
+      if (fout) {
+        if ('Noto Sans Japanese' === fontFamily) {
+          $('body').css({'font-family': orgFontFamily});
+        }
       }
     },
     fontinactive: function(fontFamily, fontDescription) {
