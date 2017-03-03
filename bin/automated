@@ -25,7 +25,6 @@ cd ..
   
 # Build site.
 bower install
-bundle exec jekyll build
 gulp
 
 # Push to master.

@@ -13,9 +13,8 @@ dependencies:
 
 test:
   post:
-    - bundle exec jekyll build
-   #- bundle exec htmlproofer ./_site --only-4xx --allow-hash-href
     - gulp
+   #- bundle exec htmlproofer ./_site --only-4xx --allow-hash-href
 
 deployment:
   production:
