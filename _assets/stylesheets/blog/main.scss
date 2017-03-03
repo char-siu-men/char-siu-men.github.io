@@ -276,12 +276,14 @@
 
 .post-link {
   margin-bottom: 0.75em;
+  text-align: left;
 }
 
 .post-title {
   font-weight: 600;
   font-size: 1.25em;
-  /*text-transform: uppercase;*/
+  display: block;
+  text-align: left;
 }
 
 .post-date {
@@ -290,7 +292,12 @@
   font-weight: 600;
   font-size: 0.65em;
   display: block;
-  text-transform: uppercase;
+  text-align: left;
+}
+
+.post-description {
+  display: block;
+  text-align: left;
 }
 
 #sidebar-button {

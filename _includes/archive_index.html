@@ -1,0 +1,15 @@
+<div class="posts">
+  <ul class="posts-list">
+    {% for post in include.posts %}
+      <li class="post-link">
+        <span class="post-date">{{ post.date | date: "%Y/%m/%d" }}</span>
+        <a class="post-title" href="{{ post.url }}">
+          {{ post.title }}
+        </a>
+        <span class="post-description">
+          {{ post.description }}
+        </span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

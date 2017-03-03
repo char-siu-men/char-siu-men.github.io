@@ -17,25 +17,10 @@
   {% include header.html %}
 
   <div id="low_page" class="wrap_all">
-    <h1 class="page__title w_const"><span class="en">BLOG</span><span class="jp">ブログ</span></h1>
-    <section class="page__lead  w_const input_container">
-      <span>"{{page.title}}" タグの記事です。</span>
-    </section>
+    <h1 class="page__title w_const"><span class="en">BLOG</span><span class="jp">"{{page.title}}" タグの記事です。</span></h1>
     <article id="blog" class="article">
       <div class="article__conts w_const">
-        <div class="posts">
-          <ul class="posts-list">
-            {% for post in page.posts %}
-              <li class="post-link">
-                <a class="post-title" href="{{ post.url }}">
-                  <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-                  {{ post.title }}
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-
+        {% include archive_index.html posts=page.posts %}
       </div>
     </article>
   </div>

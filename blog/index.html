@@ -6,26 +6,12 @@ description: "アルタスファイブが、どんな会社なのか、ブログ
 <div id="low_page" class="wrap_all">
   <h1 class="page__title w_const"><span class="en">BLOG</span><span class="jp">ブログ</span></h1>
   <section class="page__lead  w_const input_container">
-    <span>アルタスファイブが、どんな会社なのか、</span>
-    <span>ブログを通じて、ご紹介しています。</span>
-    <span>求人のご応募、開発のご依頼、あるいは、ご意見、ご感想など、</span>
-    <span>お気軽にお問い合わせくださいませ。</span>
+    <span>アルタスファイブが、どんな会社なのか、ブログを通じて、ご紹介しています。</span>
+    <span>求人のご応募、開発のご相談など、お気軽にお問い合わせください。</span>
   </section>
   <article id="blog" class="article">
     <div class="article__conts w_const">
-      <div class="posts">
-        <ul class="posts-list">
-          {% for post in site.posts %}
-            <li class="post-link">
-              <a class="post-title" href="{{ post.url }}">
-                <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-                {{ post.title }}
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-
+      {% include archive_index.html posts=site.posts %}
     </div>
   </article>
 </div>
