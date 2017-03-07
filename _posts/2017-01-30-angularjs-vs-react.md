@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "React vs AngularJS それぞれの利点と特徴（Angular編）"
+title:  "AngularJS vs React それぞれの利点と特徴（Angular編）"
 date:   2017-01-30 18:11:44 +0900
 categories: blog AngularJS React
-description: "「React.js」と「AngularJS」のフレームワークで同じツールを作成し、実装過程と成果物を比較して、両者のフレームワークの良いところ・悪いところを検証したいと思います。（Angular編）"
+description: "「Angular 2」「React」両フレームワークでToDoツールを作成する記事です。実装過程と成果物を比較して、両者のフレームワークの良いところ・悪いところを検証したいと思います。（Angular編）"
 tags: ["プログラミング技術総覧", "AngularJS", "React"]
 ---
 ## React or Angular 2 ー どちらを使うべきか
@@ -243,7 +243,7 @@ export class AppModule { }
 @NgModuleでメタデータを定義します。引数の値は、下記のようになります。
 
 * imports
-	*モジュールが必要とする他のモジュールをimportします。
+  * モジュールが必要とする他のモジュールを`import`します
 * declarations
 	* モジュールが含むコンポーネントを指定します
 * bootstrap
@@ -636,7 +636,7 @@ ngOnInit(): void {
 最後にフッターを定義します。フッターにはタスクの合計数と、「完了」のチェックボックスにマークをつけた数を表示します。
 
 * app/components/footer/footer.component.ts
-* app/components/footer/footer.html 
+* app/components/footer/footer.html
 
 ```
 <footer class="container">
@@ -730,27 +730,16 @@ import {TodoFooterComponent} from './components/footer/footer.component';
 * DIを利用しているのでそれぞれのクラスの依存度が少ない
 * TypeScriptで書けるので、記述量少なく保守性の高いソースコードを書くことができる
 
+後編では、Reactによる同様のToDoツールの実装と、両者の比較を行っています。ぜひご覧ください。
+
+* [AngularJS vs React それぞれの利点と特徴（React編）](https://www.altus5.co.jp/blog/angularjs/react/2017/02/24/react-vs-angularjs/)
+
 ## 参考
 
-【βリリース記念】5分でわかる！Angular 2のススメ  
-<https://html5experts.jp/canidoweb/18001/>  
-
-他のフレームワークとの比較(vue.js)   
-<https://jp.vuejs.org/v2/guide/comparison.html>  
-
-VPSサーバーでWebサイト公開　備忘録　~Linux、MySQLからAJAXまで  
-<http://wordpress.honobono-life.info/code/angular2%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%80%81bootstrap%E9%96%A2%E6%95%B0%E3%81%AE%E6%A6%82%E8%A6%81/>  
-
-「Angular 2」の構成単位「コンポーネント」「モジュール」を使いこなそう  
-<https://codezine.jp/article/detail/9700>  
-
-SystemJS入門  
-<http://minotaur.badwitch.io/getting-started-with-systemjs/>  
-
-Dolpenの日記  
-<http://dolpen.hatenablog.com/entry/2016/04/25/201343>  
-
-Angular 2のLifecycle Hooksを理解する  
-<http://blog.yuhiisk.com/archive/2016/05/02/angular2-lifecycle-hooks.html>  
-
-
+* [【βリリース記念】5分でわかる！Angular2のススメ _ HTML5Experts.jp](https://html5experts.jp/canidoweb/18001/)
+* [他のフレームワークとの比較 - Vue.js.html](https://jp.vuejs.org/v2/guide/comparison.html)
+* [Angular2のモジュール、コンポーネント、bootstrapの概要 _ VPSサーバーでWebサイト公開　備忘録　_Linux、MySQLからAJAXまで](http://wordpress.honobono-life.info/code/angular2%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%80%81bootstrap%E9%96%A2%E6%95%B0%E3%81%AE%E6%A6%82%E8%A6%81/)
+* [「Angular 2」の構成単位「コンポーネント」「モジュール」を使いこなそう (1_3)：CodeZine（コードジン）](https://codezine.jp/article/detail/9700)
+* [SystemJS 一巡り](http://minotaur.badwitch.io/getting-started-with-systemjs/)
+* [Angular2 における Injector の話 - Dolpenの日記](http://dolpen.hatenablog.com/entry/2016/04/25/201343)
+* [Angular2のLifecycle Hooksを理解する _ Yuhiisk](http://blog.yuhiisk.com/archive/2016/05/02/angular2-lifecycle-hooks.html)
