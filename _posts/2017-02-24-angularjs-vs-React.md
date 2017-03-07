@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "React vs AngularJS それぞれの利点と特徴（React編）"
+title:  "AngularJS vs React それぞれの利点と特徴（React編）"
 date:   2017-02-24 10:11:44 +0900
 categories: blog AngularJS React
-description: "「React.js」と「AngularJS」のフレームワークで同じツールを作成し、実装過程と成果物を比較して、両者のフレームワークの良いところ・悪いところを検証したいと思います。（React編）"
+description: "「Angular 2」「React」両フレームワークでToDoツールを作成する記事です。実装過程と成果物を比較して、両者のフレームワークの良いところ・悪いところを検証したいと思います。（React編）"
 tags: ["プログラミング技術総覧", "AngularJS", "React"]
 ---
 
-「AngularJS vs React」前回のAngular編では、Angular 2でToDoツールを作成していきました。今回は、Reactを用いて同様の機能を持ったToDoツールを作成することで、両者の特徴を明確にしたいと思います。
+「AngularJS vs React」[前回のAngular編](https://www.altus5.co.jp/blog/angularjs/react/2017/01/30/react-vs-angularjs/)では、Angular 2でToDoツールを作成していきました。今回は、Reactを用いて同様の機能を持ったToDoツールを作成することで、両者の特徴を明確にしたいと思います。
 
 ## Reactの特徴
 
@@ -1028,3 +1028,12 @@ Angular 2の場合は、従来のようなテンプレート方式を採用し�
 という流れがやりやすいと思いました。
 
 最後に、個人的な感想として、JSXは「ものすごく好き嫌いが分かれる」と直観しました。明確なメリットがないと、会社によっては導入が難しいかもしれません。
+
+## 参考
+
+* [React + Redux + TypeScript でWebアプリを作った感想・勉強法と Angular との比較 - Qiita](http://qiita.com/star__hoshi/items/34eb4ccafcfa100b5cad)
+* [ReactとAngular 2の比較（React vs. Angular 2） _ maesblog](http://mae.chab.in/archives/2929)
+* [フレームワーク対決！Angular VS React仮想パネルディスカッション _ HTML5Experts.jp](https://html5experts.jp/yoshikawa_t/14459/)
+* [出来る限り短く説明するReact.js入門 - Qiita](http://qiita.com/rgbkids/items/8ec309d1bf5e203d2b19)
+* [Facebook公式Fluxで始めるReact+Fluxアプリ開発まとめ - Qiita](http://qiita.com/sl2/items/ff7a07c00f545d245a5c#view-container)
+* [React における State と Props の違い - Qiita](http://qiita.com/kyrieleison/items/78b3295ff3f37969ab50)
