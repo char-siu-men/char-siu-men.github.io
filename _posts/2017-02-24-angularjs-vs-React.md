@@ -7,7 +7,7 @@ description: "「Angular 2」「React」両フレームワークでToDoツール
 tags: ["プログラミング技術総覧", "AngularJS", "React"]
 ---
 
-「AngularJS vs React」[前回のAngular編](https://www.altus5.co.jp/blog/angularjs/react/2017/01/30/react-vs-angularjs/)では、Angular 2でToDoツールを作成していきました。今回は、Reactを用いて同様の機能を持ったToDoツールを作成することで、両者の特徴を明確にしたいと思います。
+「AngularJS vs React」[前回のAngular編](https://www.altus5.co.jp/blog/angularjs/react/2017/01/30/angularjs-vs-react/)では、Angular 2でToDoツールを作成していきました。今回は、Reactを用いて同様の機能を持ったToDoツールを作成することで、両者の特徴を明確にしたいと思います。
 
 ## Reactの特徴
 

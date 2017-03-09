@@ -732,7 +732,7 @@ import {TodoFooterComponent} from './components/footer/footer.component';
 
 後編では、Reactによる同様のToDoツールの実装と、両者の比較を行っています。ぜひご覧ください。
 
-* [AngularJS vs React それぞれの利点と特徴（React編）](https://www.altus5.co.jp/blog/angularjs/react/2017/02/24/react-vs-angularjs/)
+* [AngularJS vs React それぞれの利点と特徴（React編）](https://www.altus5.co.jp/blog/angularjs/react/2017/02/24/angularjs-vs-React/)
 
 ## 参考
 
