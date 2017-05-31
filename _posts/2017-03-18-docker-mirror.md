@@ -174,14 +174,14 @@ sudo update-ca-trust extract
 ```
 
 テストします。  
-`HTTP/1.1 200 OK` が表示されれば、OKです。もしも、`curl: (60) SSL certificate problem: unable to get local issuer certificate` と表示されたら、独自CAの証明書のインストールが間違っています。
 ```
 curl -I https://proxy.altus5.local:5000/v2/
 ```
+`HTTP/1.1 200 OK` が表示されれば、OKです。もしも、`curl: (60) SSL certificate problem: unable to get local issuer certificate` と表示されたら、独自CAの証明書のインストールが間違っています。
 
 ### dockerデーモンの起動オプション設定
 
-dockerデーモンの起動オプションを設定します。
+dockerデーモンの起動オプションを設定します。  
 vi /etc/sysconfig/docker
 ```
 OPTIONS='--selinux-enabled --log-driver=journald --signature-verification=false --registry-mirror=https://proxy.altus5.local:5000 --disable-legacy-registry=true'
@@ -200,7 +200,7 @@ docker-compose logs -f
 ```
 クライアント側で、pullしてみます。
 ```
-sudo docker pull busybox:latest
+sudo docker pull busybox:latest
 ```
 
 クライアント側で、Pull complete と表示されて、 docker-registry の方のログにも、
@@ -208,9 +208,9 @@ docker-compose logs -f
 
 ## どれくらい早くなった？
 
-実際に、LAN内にキャッシュされることの効果を測定してみました。
+キャッシュ効果を測定してみました。
 
-* 初回
+**初回**  
 ```
 [root@hoge ~]# time docker pull centos:7
 Trying to pull repository docker.io/library/centos ...
@@ -222,7 +222,7 @@ real    2m56.171s
 user    0m0.049s
 sys     0m0.041s
 ```
-* 削除してから、再取得
+**削除してから、再取得**  
 ```
 [root@hoge ~]# time docker rmi centos:7
 [root@hoge ~]# time docker pull centos:7
@@ -236,9 +236,9 @@ user    0m0.029s
 sys     0m0.026s
 ```
 
-初回は、当然、遅いですが、一度、プロキシーにキャッシュされると、早いです。
+初回は、当然、遅いですが、一度、プロキシーにキャッシュされると、早くなることがわかります。  
 この実験では、 2m56.171s -> 0m16.212s と 2分40秒も節約されました。
 
-たかだか、2分半ですが、環境構築中は、なんども、これをやるので、イライラが減って、ありがたいです。
+たかだか、2分40秒ですが、環境構築中は、なんども、これをやるので、イライラが減って、ありがたいですね。
 
 
