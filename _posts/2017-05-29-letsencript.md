@@ -146,8 +146,8 @@ server {
 
   ・・・
 
-  ssl_certificate /etc/certs/project.altus-five.com/fullchain.pem;
-  ssl_certificate_key /etc/certs/project.altus-five.com/privkey.pem;
+  ssl_certificate /etc/ssl/fullchain.pem;
+  ssl_certificate_key /etc/ssl/privkey.pem;
 
   ・・・
 }
