@@ -1,0 +1,70 @@
+<div class="posts cf">
+  <% for (var horzPos = 0; horzPos < 3; ++horzPos) { %>
+    <ul class="posts-list">
+      <%
+      posts.sort(function(p1, p2){
+        if (p1.date > p2.date) return -1;
+        if (p1.date < p2.date) return 1;
+        return 0;
+      });
+      posts.forEach(function(post, index, array) {
+        if ((index % 3) !== horzPos) {
+          return;
+        }
+        %>
+        <li class="post-link">
+          <span class="post-date">
+            <%= formatDate(post.date, 'YYYY/MM/DD') %>
+          </span>
+          <a class="post-title" href="<%= post.url %>">
+            <%= post.title %>
+          </a>
+          <span class="post-description">
+            <a href="<%= post.url %>">
+              <%= post.description %>
+            </a>
+          </span>
+          <div class="post-link-tags">
+            <ul class="tag-uline">
+              <%
+              post.tags.forEach((tag) => {
+                var tagColor = 12;
+                if (site.tagMap[tag]) {
+                  tagColor = site.tagMap[tag].index % 12;
+                }
+                %>
+                <li class="tag-uline-label tag__<%= tagColor %>">
+                  <a href="/blog/tag/<%- encodeURIComponent(tag) %>/">
+                    <%= tag %>
+                  </a>
+                </li>
+                <%
+              });
+              %>
+            </ul>
+          </div>
+        </li>
+        <%
+      });
+      %>
+    </ul>
+    <%
+  }
+  %>
+</div>
+<div class="tags">
+  <div class="tags-title">タグ</div>
+  <ul class="tag-index">
+    <%
+    Object.keys(site.tagMap).forEach((tag) => {
+      var stag = site.tagMap[tag];
+      var tagColor = stag.index % 12;
+      %>
+      <li class="tag-color-label tag__<%= tagColor %>">
+        <a href="/blog/tag/<%- encodeURIComponent(tag) %>/"><%= tag %> (<%= stag.posts.length %>)</a>
+      </li>
+      <%
+    });
+    %>
+  </ul>
+</div>

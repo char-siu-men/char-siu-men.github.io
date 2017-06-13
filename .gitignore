@@ -1,8 +1,5 @@
-!.keep
-*.DS_Store
-*.sass-cache
-/.asset-cache/*
-/_assets/bower/*
-/_site/*
-/_vendor/*
-/.jekyll-metadata
+node_modules
+dist/
+.tmp
+app.yaml
+build/

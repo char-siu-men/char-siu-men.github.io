@@ -1,0 +1,89 @@
+<!doctype html>
+<html dir="ltr" lang="ja">
+<head>
+  <%- include('../_includes/head.html.ejs'); %>
+  <link type="text/css" rel="stylesheet" href="<%= asset_path('/styles/blog.css') %>" />
+</head>
+<body>
+  <%- include('../_includes/gtm.html.ejs'); %>
+  <!--[if lt IE 9]>
+    <p class="browserupgrade">
+      <strong>古い</strong>ブラウザをご使用されています。
+      本サイトを快適に閲覧頂くために、<a href="http://browsehappy.com/">新しいブラウザにアップグレード</a>してください。
+    </p>
+  <![endif]-->
+  <%- include('../_includes/header.html.ejs'); %>
+
+  <div id="blog_page" class="wrap_all">
+    <article id="blog" class="article">
+      <section class="blog__title w_const">
+        <span><%= page.title %></span>
+      </section>
+      <div class="article__conts w_const cf">
+        <div id="blog-content">
+          <div id="blog-subtitle" class="cf">
+            <div id="blog-date">
+              <%= formatDate(post.date, 'YYYY/MM/DD') %>
+            </div>
+            <div id="blog-tags">
+              <ul class="tag-uline">
+                <%
+                post.tags.forEach((tag) => {
+                  var tagColor = 12;
+                  if (site.tagMap[tag]) {
+                    tagColor = site.tagMap[tag].index % 12;
+                  }
+                  %>
+                  <li class="tag-uline-label tag__<%= tagColor %>">
+                    <a href="/blog/tag/<%= encodeURIComponent(tag) %>/">
+                      <%= tag %>
+                    </a>
+                  </li>
+                  <%
+                });
+                %>
+              </ul>
+            </div>
+          </div>
+          <div class="markdown-body">
+          <%- content %>
+          </div>
+        </div>
+        <div id="blog-menu">
+          <span><strong>タグ</strong></span>
+          <ul>
+            <%
+            Object.keys(site.tagMap).forEach((tag) => {
+              var stag = site.tagMap[tag];
+              var tagColor = stag.index % 12;
+              %>
+              <li class="tag-color-label tag__<%= tagColor %>">
+                <a href="/blog/tag/<%- encodeURIComponent(tag) %>/"><%= tag %> (<%= stag.posts.length %>)</a>
+              </li>
+              <%
+            });
+            %>
+          </ul>
+        </div>
+      </div>
+      <div class="w_const">
+        <%- include('../_includes/socialbuttons_v.html.ejs'); %>
+      </div>
+    </article>
+    <%- include('../_includes/scout.html.ejs'); %>
+  </div>
+
+  <%- include('../_includes/footer.html.ejs'); %>
+  <%- include('../_includes/javascripts.html.ejs'); %>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script async
+   src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"></script>
+</body>
+</html>
