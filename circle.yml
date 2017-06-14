@@ -5,7 +5,7 @@ machine:
     STAGING_USER_NAME: char-siu-men
     STAGING_USER_EMAIL: char.siu.men@gmail.com
   node:
-    version: 4.7.1
+    version: v4.7.1
   timezone:
     Asia/Tokyo
 
