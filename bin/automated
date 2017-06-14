@@ -8,27 +8,39 @@ set -e
 # Variables
 ORIGIN_URL=`git config --get remote.origin.url`
 
+IS_PROD=0
+if [ $ORIGIN_URL = "git@github.com:altus5/altus5.github.io.git" ]; then
+  IS_PROD=1
+fi
+
 echo "Started deploying"
 
-git config user.name "$USER_NAME"
-git config user.email "$USER_EMAIL"
+if [ $IS_PROD = "1" ]; then
+  git config user.name "$USER_NAME"
+  git config user.email "$USER_EMAIL"
+else
+  git config user.name "$STAGING_USER_NAME"
+  git config user.email "$STAGING_USER_EMAIL"
+fi
 
 # Checkout master branch.
-mkdir -p _site
-cd _site
+mkdir -p dist
+cd dist
 cp -ar ../.git .
 find . -maxdepth 1 ! -name '.' ! -name '.git' -exec rm -rf {} \;
 git reset --hard
 git checkout master
 find . -maxdepth 1 ! -name '.' ! -name '.git' -exec rm -rf {} \;
 cd ..
-  
+
 # Build site.
-bower install
 gulp
 
 # Push to master.
-cd _site
+cd dist
+if [ $IS_PROD != "1" ]; then
+  rm -f CNAME
+fi
 git add -fA
 git commit --allow-empty -m "$(git log -1 --pretty=%B) [ci skip]"
 git push -f $ORIGIN_URL master

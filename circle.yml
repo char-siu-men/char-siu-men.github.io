@@ -2,6 +2,8 @@ machine:
   environment:
     USER_NAME: a5-receptionist
     USER_EMAIL: receptionist@altus5.com
+    STAGING_USER_NAME: char-siu-men
+    STAGING_USER_EMAIL: char.siu.men@gmail.com
   node:
     version: 4.7.1
   timezone:
