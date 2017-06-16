@@ -14,5 +14,5 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "draft" ]; then
-              ./.circleci/bin/automated
+              bash ./.circleci/bin/automated
             fi
