@@ -11,14 +11,8 @@ jobs:
       - image: altus5/web-starter-kit:0.6.5_1
     steps:
       - checkout
-      - run:
-          shell: /bin/bash
-          command: |
-            pwd
-            ls
-            env
-            if [ "${CIRCLE_BRANCH}" == "draft" ]; then
-              git config -l
-              #npm install
-              #gulp
-            fi
+      - deploy:
+        command: |
+          if [ "${CIRCLE_BRANCH}" == "draft" ]; then
+            ./.circleci/bin/automated
+          fi
