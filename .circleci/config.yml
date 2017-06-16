@@ -16,7 +16,8 @@ jobs:
           command: |
             pwd
             ls
+            env
             if [ "${CIRCLE_BRANCH}" == "draft" ]; then
-              npm install
-              gulp
+              #npm install
+              #gulp
             fi
