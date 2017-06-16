@@ -18,6 +18,7 @@ jobs:
             ls
             env
             if [ "${CIRCLE_BRANCH}" == "draft" ]; then
+              git config -l
               #npm install
               #gulp
             fi
