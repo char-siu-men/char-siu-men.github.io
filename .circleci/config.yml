@@ -17,5 +17,6 @@ jobs:
             pwd
             ls
             if [ "${CIRCLE_BRANCH}" == "draft" ]; then
-              echo ${CIRCLE_BRANCH}
+              npm install
+              gulp
             fi
