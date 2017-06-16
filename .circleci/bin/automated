@@ -22,6 +22,7 @@ else
   git config user.name "$STAGING_USER_NAME"
   git config user.email "$STAGING_USER_EMAIL"
 fi
+git config -l
 
 # Checkout master branch.
 mkdir -p dist
