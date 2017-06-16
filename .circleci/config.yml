@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - deploy:
-        command: |
-          if [ "${CIRCLE_BRANCH}" == "draft" ]; then
-            ./.circleci/bin/automated
-          fi
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "draft" ]; then
+              ./.circleci/bin/automated
+            fi
