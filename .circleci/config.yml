@@ -1,6 +1,7 @@
 version: 2
 jobs:
   build:
+    machine: true
     environment:
       USER_NAME: a5-receptionist
       USER_EMAIL: receptionist@altus5.com
