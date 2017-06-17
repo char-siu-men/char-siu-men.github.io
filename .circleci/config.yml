@@ -15,10 +15,10 @@ jobs:
           keys:
             - npm_cache
       - deploy:
-        command: |
-          if [ "${CIRCLE_BRANCH}" == "draft" ]; then
-            bash ./.circleci/automated
-          fi
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "draft" ]; then
+              bash ./.circleci/automated
+            fi
       - save_cache:
           key: npm_cache
           paths:
