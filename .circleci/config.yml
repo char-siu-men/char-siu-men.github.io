@@ -9,6 +9,7 @@ jobs:
       WSK_REPO: "altus5/web-starter-kit"
       WSK_TAG: 0.6.5_1
       WSK_IMAGE: ~/cache/altus5-web-starter-kit-${WSK_TAG}.tar
+    working_directory: ~/wsk
     steps:
       - checkout
       - restore_cache:
