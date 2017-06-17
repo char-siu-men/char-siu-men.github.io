@@ -18,10 +18,10 @@ jobs:
             - wsk-image
       - deploy:
           command: |
-              echo "--env"
-              env
-              echo "--pwd"
-              pwd
+            echo "--env"
+            env
+            echo "--pwd"
+            pwd
             if [ "${CIRCLE_BRANCH}" == "draft" ]; then
               if [ -e $DOCKER_IMAGE ]; then
                 docker load -i $DOCKER_IMAGE
