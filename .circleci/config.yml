@@ -18,6 +18,10 @@ jobs:
             - wsk-image
       - deploy:
           command: |
+              echo "--env"
+              env
+              echo "--pwd"
+              pwd
             if [ "${CIRCLE_BRANCH}" == "draft" ]; then
               if [ -e $DOCKER_IMAGE ]; then
                 docker load -i $DOCKER_IMAGE
@@ -26,10 +30,6 @@ jobs:
                 mkdir -p $(dirname $WSK_IMAGE)
                 docker save -o $WSK_IMAGE $WSK_REPO:$WSK_TAG
               fi
-              echo "--env"
-              env
-              echo "--pwd"
-              pwd
               #docker run -it $WSK_REPO:$WSK_TAG \
               #  -v /srv/web
               #bash ./.circleci/bin/automated
