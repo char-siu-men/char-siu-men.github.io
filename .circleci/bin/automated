@@ -48,6 +48,7 @@ fi
 git add -fA
 git commit --allow-empty -m "$(git log -1 --pretty=%B) [ci skip]"
 ls -la
+env
 git push -f $ORIGIN_URL master
 
 echo "Deployed Successfully!"
