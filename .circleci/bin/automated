@@ -47,6 +47,7 @@ if [ $IS_PROD != "1" ]; then
 fi
 git add -fA
 git commit --allow-empty -m "$(git log -1 --pretty=%B) [ci skip]"
+ls -la
 git push -f $ORIGIN_URL master
 
 echo "Deployed Successfully!"

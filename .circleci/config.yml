@@ -6,13 +6,33 @@ jobs:
       USER_EMAIL: receptionist@altus5.com
       STAGING_USER_NAME: char-siu-men
       STAGING_USER_EMAIL: char.siu.men@gmail.com
-    working_directory: ~/wsk
-    docker:
-      - image: altus5/web-starter-kit:0.6.5_1
+      WSK_REPO: "altus5/web-starter-kit"
+      WSK_TAG: 0.6.5_1
+      WSK_IMAGE: ~/cache/altus5-web-starter-kit-${WSK_TAG}.tar
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - wsk-image
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "draft" ]; then
-              bash ./.circleci/bin/automated
+              if [ -e $DOCKER_IMAGE ]; then
+                docker load -i $DOCKER_IMAGE
+              else
+                docker pull $WSK_REPO:$WSK_TAG
+                mkdir -p $(dirname $WSK_IMAGE)
+                docker save -o $WSK_IMAGE $WSK_REPO:$WSK_TAG
+              fi
+              echo "--env"
+              env
+              echo "--pwd"
+              pwd
+              #docker run -it $WSK_REPO:$WSK_TAG \
+              #  -v /srv/web
+              #bash ./.circleci/bin/automated
             fi
+      - save_cache:
+          key: wsk-image
+          paths:
+            - ~/cache
