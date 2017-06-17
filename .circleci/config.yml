@@ -1,40 +1,26 @@
 version: 2
 jobs:
   build:
-    machine: true
     environment:
       USER_NAME: a5-receptionist
       USER_EMAIL: receptionist@altus5.com
       STAGING_USER_NAME: char-siu-men
       STAGING_USER_EMAIL: char.siu.men@gmail.com
-      WSK_REPO: "altus5/web-starter-kit"
-      WSK_TAG: 0.6.5_1
-      WSK_IMAGE: ~/cache/altus5-web-starter-kit-${WSK_TAG}.tar
     working_directory: ~/wsk
+    docker:
+      - image: altus5/web-starter-kit:0.6.5_1
     steps:
       - checkout
       - restore_cache:
           keys:
-            - wsk-image
+            - npm_cache
       - deploy:
-          command: |
-            echo "--env"
-            env
-            echo "--pwd"
-            pwd
-            if [ "${CIRCLE_BRANCH}" == "draft" ]; then
-              if [ -e $DOCKER_IMAGE ]; then
-                docker load -i $DOCKER_IMAGE
-              else
-                docker pull $WSK_REPO:$WSK_TAG
-                mkdir -p $(dirname $WSK_IMAGE)
-                docker save -o $WSK_IMAGE $WSK_REPO:$WSK_TAG
-              fi
-              #docker run -it $WSK_REPO:$WSK_TAG \
-              #  -v /srv/web
-              #bash ./.circleci/bin/automated
-            fi
+        command: |
+          if [ "${CIRCLE_BRANCH}" == "draft" ]; then
+            bash ./.circleci/automated
+          fi
       - save_cache:
-          key: wsk-image
+          key: npm_cache
           paths:
-            - ~/cache
+            - ~/wsk/node_modules
+            - ~/.npm
