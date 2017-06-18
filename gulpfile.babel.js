@@ -404,7 +404,7 @@ gulp.task('default', ['clean'], cb =>
     ['styles', 'page.markdown', 'page.ejs', 'page.index'],
     ['sitemap', 'lint', 'scripts', 'vendorjs', 'images', 'copy', 'plain.html'],
     ['html', 'xml'],
-    'generate-service-worker',
+    //'generate-service-worker',
     cb
   )
 );
