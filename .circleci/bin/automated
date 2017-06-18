@@ -33,7 +33,7 @@ git checkout master
 ls
 find . -maxdepth 1 ! -name '.' ! -name '.git' -exec rm -rf {} \;
 cp -prf ../dist/* .
-if [ "$CIRCLE_PROJECT_REPONAME" != "altus5.github.io.git" ]; then
+if [ "$CIRCLE_PROJECT_REPONAME" = "char-siu-men.github.io" ]; then
   echo "remove CNAME"
   env
   rm -f CNAME
