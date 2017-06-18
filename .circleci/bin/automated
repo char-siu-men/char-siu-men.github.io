@@ -30,6 +30,7 @@ cd .target
 cp -ar ../.git .
 git reset --hard
 git checkout master
+ls
 find . -maxdepth 1 ! -name '.' ! -name '.git' -exec rm -rf {} \;
 cp -prf ../dist/* .
 if [ "$CIRCLE_PROJECT_REPONAME" != "altus5.github.io.git" ]; then
