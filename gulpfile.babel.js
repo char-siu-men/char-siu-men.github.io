@@ -324,21 +324,12 @@ gulp.task('html', () => {
 // Scan your HTML for assets & optimize them
 gulp.task('xml', () => {
   return gulp.src([
+    'app/**/*.xml',
     'build/**/*.xml'
   ])
     .pipe($.debug({title: 'xml'}))
-    .pipe($.xml({
-      parseOpts: {
-        trim: true
-      },
-      buildOpts: {
-        renderOpts: {
-          pretty: false
-        },
-        allowSurrogateChars: true,
-        cdata: true
-      }
-    }))
+    .pipe($.xml(xmlNormalizeOpts))
+    .pipe($.if('*.xml', $.size({title: 'xml', showFiles: true})))
     .pipe(gulp.dest('dist'));
 });
 
