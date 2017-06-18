@@ -43,7 +43,10 @@ gulp
 # Push to master.
 cd dist
 if [ $IS_PROD != "1" ]; then
+  echo "remove CNAME"
   rm -f CNAME
+else
+  ls
 fi
 git add -fA
 git status
