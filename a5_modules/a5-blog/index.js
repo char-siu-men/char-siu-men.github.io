@@ -199,17 +199,35 @@ function buildEjsRenderData(archiveData, file) {
     page: page,
     post: page,
     filename: file.path,
-      asset_path: function(path) {
-        return path;
-      },
-      formatDate: function(date, format, timezone) {
-        var d = moment(new Date(date));
-        if (!timezone) {
-          timezone = config.timezone;
+    asset_path: function(path) {
+      return path;
+    },
+    relatePosts: function(title, site) {
+      var posts = [];
+      site.posts.forEach((post) => {
+        if (post.title !== title) {
+          return;
         }
-        d = d.tz(timezone);
-        return d.format(format);
+        post.relates.forEach((url) => {
+          site.posts.forEach((rpost) => {
+            if (rpost.url === url) {
+              posts.push(rpost);
+              return false;
+            }
+          });
+        });
+        return false;
+      });
+      return posts;
+    },
+    formatDate: function(date, format, timezone) {
+      var d = moment(new Date(date));
+      if (!timezone) {
+        timezone = config.timezone;
       }
+      d = d.tz(timezone);
+      return d.format(format);
+    }
   };
   if (!data.site.title) {
     data.site.title = data.site.name;
@@ -234,6 +252,52 @@ function buildEjsRenderData(archiveData, file) {
           stag = data.site.tagMap[tag];
         }
         stag.posts.push(post);
+      });
+    });
+    data.site.posts.sort(function(p1, p2) {
+      if (p1.date > p2.date) return -1;
+      if (p1.date < p2.date) return 1;
+      return 0;
+    });
+    // 関連記事の作成
+    data.site.posts.forEach((post) => {
+      var relateScore = [];
+      post.tags.forEach((tag) => {
+        data.site.tagMap[tag].posts.forEach((rpost) => {
+          if (post === rpost) {
+            return;
+          }
+          if (typeof relateScore[rpost.url] === 'undefined') {
+            relateScore[rpost.url] = {
+              score: 0,
+              post: rpost
+            };
+          }
+          relateScore[rpost.url].score++;
+        });
+      });
+      var relates = [];
+      Object.keys(relateScore).forEach((url) => {
+        relates.push(relateScore[url]);
+      });
+      relates.sort((p1, p2) => {
+        var score = p2.score - p1.score;
+        if (score === 0) {
+          if (p1.post.date > p2.post.date) score = -1;
+          else if (p1.post.date < p2.post.date) score = 1;
+          else score = 0;
+        }
+        return score;
+      });
+      post.relates = [];
+      relates.forEach((relate, index) => {
+        if (index >= 5) {
+          return;
+        }
+        if (relate.score === 0) {
+          return;
+        }
+        post.relates.push(relate.post.url);
       });
     });
     if (archiveData.pages) {

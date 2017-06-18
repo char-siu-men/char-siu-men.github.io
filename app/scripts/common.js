@@ -37,4 +37,6 @@ $(function() {
   if ($('#gmap').length > 0) {
     initMap();
   }
+  // 高さ揃え
+  $('.relate .post-link').tile(5);
 });

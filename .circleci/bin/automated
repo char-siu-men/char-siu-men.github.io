@@ -35,12 +35,7 @@ find . -maxdepth 1 ! -name '.' ! -name '.git' -exec rm -rf {} \;
 cp -prf ../dist/* .
 if [ "$CIRCLE_PROJECT_REPONAME" = "char-siu-men.github.io" ]; then
   echo "remove CNAME"
-  env
   rm -f CNAME
-else
-  echo "deploy production"
-  ls
-  git status
 fi
 
 # Push to master.

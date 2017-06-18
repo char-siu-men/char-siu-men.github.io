@@ -1,11 +1,11 @@
-<div class="posts cf">
-  <% for (var horzPos = 0; horzPos < 3; ++horzPos) { %>
-    <ul class="posts-list">
+<%
+if (posts.length > 0) {
+  %>
+  <div class="relate">
+    <h1>関連記事</h1>
+    <ul>
       <%
       posts.forEach(function(post, index, array) {
-        if ((index % 3) !== horzPos) {
-          return;
-        }
         %>
         <li class="post-link">
           <span class="post-date">
@@ -19,19 +19,12 @@
               <%= post.description %>
             </a>
           </span>
-          <div class="post-link-tags">
-            <%- include('../_includes/post_tag.html.ejs', {post: post}); %>
-          </div>
         </li>
         <%
       });
       %>
     </ul>
-    <%
-  }
-  %>
-</div>
-<div class="tags">
-  <div class="tags-title">タグ</div>
-  <%- include('../_includes/all_tag.html.ejs', {addClass: 'tag-index'}); %>
-</div>
+  </div>
+  <%
+}
+%>

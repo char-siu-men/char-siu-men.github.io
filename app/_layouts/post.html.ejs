@@ -26,23 +26,7 @@
               <%= formatDate(post.date, 'YYYY/MM/DD') %>
             </div>
             <div id="blog-tags">
-              <ul class="tag-uline">
-                <%
-                post.tags.forEach((tag) => {
-                  var tagColor = 12;
-                  if (site.tagMap[tag]) {
-                    tagColor = site.tagMap[tag].index % 12;
-                  }
-                  %>
-                  <li class="tag-uline-label tag__<%= tagColor %>">
-                    <a href="/blog/tag/<%= encodeURIComponent(tag) %>/">
-                      <%= tag %>
-                    </a>
-                  </li>
-                  <%
-                });
-                %>
-              </ul>
+              <%- include('../_includes/post_tag.html.ejs'); %>
             </div>
           </div>
           <div class="markdown-body">
@@ -50,24 +34,15 @@
           </div>
         </div>
         <div id="blog-menu">
+          <span><strong>最近の記事</strong></span>
+          <%- include('../_includes/recent_articles.html.ejs'); %>
           <span><strong>タグ</strong></span>
-          <ul>
-            <%
-            Object.keys(site.tagMap).forEach((tag) => {
-              var stag = site.tagMap[tag];
-              var tagColor = stag.index % 12;
-              %>
-              <li class="tag-color-label tag__<%= tagColor %>">
-                <a href="/blog/tag/<%- encodeURIComponent(tag) %>/"><%= tag %> (<%= stag.posts.length %>)</a>
-              </li>
-              <%
-            });
-            %>
-          </ul>
+          <%- include('../_includes/all_tag.html.ejs'); %>
         </div>
       </div>
       <div class="w_const">
         <%- include('../_includes/socialbuttons_v.html.ejs'); %>
+        <%- include('../_includes/relate_articles.html.ejs', {posts: relatePosts(post.title, site)}); %>
       </div>
     </article>
     <%- include('../_includes/scout.html.ejs'); %>

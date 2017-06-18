@@ -121,9 +121,10 @@ gulp.task('vendorjs', () =>
       './node_modules/jquery-validation/dist/jquery.validate.min.js',
       './node_modules/webfontloader/webfontloader.js',
       './node_modules/moment/min/moment.min.js',
-      './app/script/history.adapter.jquery.min.js',
+      'app/scripts/history.adapter.jquery.min.js',
     ])
       .pipe($.newer('.tmp/scripts'))
+      .pipe($.debug({title: 'vendorjs'}))
       .pipe($.concat('vendor.js'))
       // Output files
       .pipe($.size({title: 'vendorjs'}))
@@ -138,7 +139,7 @@ gulp.task('vendorjs', () =>
 gulp.task('scripts', () =>
     gulp.src([
       './app/scripts/**/*.js',
-      '!./app/script/history.adapter.jquery.min.js',
+      '!./app/scripts/history.adapter.jquery.min.js',
     ])
       .pipe($.newer('.tmp/scripts'))
       .pipe($.sourcemaps.init())
