@@ -44,6 +44,7 @@ gulp
 cd dist
 if [ $IS_PROD != "1" ]; then
   echo "remove CNAME"
+  env
   rm -f CNAME
 else
   ls
