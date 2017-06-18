@@ -18,6 +18,19 @@ const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 const archiveFile = __dirname + '/build/blog/archive.json';
+const pageIndexFile = __dirname + '/build/sitemap.json';
+const xmlNormalizeOpts = {
+  parseOpts: {
+    trim: true
+  },
+  buildOpts: {
+    renderOpts: {
+      pretty: false
+    },
+    allowSurrogateChars: true,
+    cdata: true
+  }
+};
 
 // Lint JavaScript
 gulp.task('lint', () =>
@@ -175,6 +188,20 @@ gulp.task('page.ejs', () => {
     .pipe(gulp.dest('build'));
 });
 
+gulp.task('page.index', () => {
+  return gulp.src([
+    './app/**/*.md',
+    './app/**/*.ejs',
+    '!./app/_*/*',
+    '!./app/**/_*',
+  ])
+    .pipe($.debug({title: 'page.index'}))
+    //.pipe($.frontMatter({remove: true}))
+    .pipe($.frontMatter())
+    .pipe(a5Blog.pageIndex(path.basename(pageIndexFile)))
+    .pipe(gulp.dest('build'));
+});
+
 gulp.task('blog.archives', () => {
   return gulp.src([
     './app/_posts/*.md',
@@ -240,20 +267,31 @@ gulp.task('feed', () => {
     .pipe($.debug({title: 'feed'}))
     .pipe($.frontMatter())
     .pipe(a5Blog.ejs(archives))
-    .pipe($.xml({
-      parseOpts: {
-        trim: true
-      },
-      buildOpts: {
-        renderOpts: {
-          pretty: false
-        },
-        allowSurrogateChars: true,
-        cdata: true
-      }
-  }))
-    .pipe($.rename('feed.xml'))
-    .pipe(gulp.dest('dist'))
+    .pipe($.xml(xmlNormalizeOpts))
+    .pipe($.rename((path) => {
+      path.extname = '';
+      path.basename = 'feed.xml';
+    }))
+    .pipe(gulp.dest('build'))
+    ;
+});
+
+gulp.task('sitemap', () => {
+  var archives = JSON.parse(fs.readFileSync(archiveFile, 'utf8'));
+  var sitemapData = JSON.parse(fs.readFileSync(pageIndexFile, 'utf8'));
+  archives.pages = sitemapData.pages;
+  return gulp.src([
+    './app/_sitemap.xml.ejs',
+  ])
+    .pipe($.debug({title: 'sitemap'}))
+    .pipe($.frontMatter())
+    .pipe(a5Blog.ejs(archives))
+    .pipe($.xml(xmlNormalizeOpts))
+    .pipe($.rename((path) => {
+      path.extname = '';
+      path.basename = 'sitemap.xml';
+    }))
+    .pipe(gulp.dest('build'))
     ;
 });
 
@@ -283,6 +321,27 @@ gulp.task('html', () => {
     .pipe(gulp.dest('dist'));
 });
 
+// Scan your HTML for assets & optimize them
+gulp.task('xml', () => {
+  return gulp.src([
+    'build/**/*.xml'
+  ])
+    .pipe($.debug({title: 'xml'}))
+    .pipe($.xml({
+      parseOpts: {
+        trim: true
+      },
+      buildOpts: {
+        renderOpts: {
+          pretty: false
+        },
+        allowSurrogateChars: true,
+        cdata: true
+      }
+    }))
+    .pipe(gulp.dest('dist'));
+});
+
 // Clean output directory
 gulp.task('clean', () => del([
   '.tmp',
@@ -307,15 +366,21 @@ gulp.task('serve', ['scripts', 'styles'], () => {
     port: 3000
   });
 
-  gulp.watch(['app/_post/*.md'],
-             ['blog.archives', 'blog.posts', 'blog.index', 'blog.tags', 'feed', reload]);
-  gulp.watch(['app/blog/_index.html.ejs'], ['blog.index', reload]);
-  gulp.watch(['app/blog/_tag.html.ejs'], ['blog.tags', reload]);
-  gulp.watch(['app/_feed.ejs'], ['feed', reload]);
+  // gulp serveでは、reloadの反応重視で、必要以上に watch の整合を追究しない
+  gulp.watch(['app/_post/*.md'], ['blog.posts', reload]);
+  gulp.watch(['app/blog/_index.html.ejs'],
+             ['blog.archives', 'blog.index', reload]);
+  gulp.watch(['app/blog/_tag.html.ejs'],
+             ['blog.archives', 'blog.tags', reload]);
+  gulp.watch(['app/_feed.xml.ejs'], ['feed', reload]);
 
-  gulp.watch(['app/**/*.md', '!./app/_*/*'], ['page.markdown', reload]);
-  gulp.watch(['app/**/*.ejs', '!./app/_*/*'], ['page.ejs', reload]);
-  gulp.watch(['app/**/*.html', '!./app/_*/*'], reload);
+  gulp.watch(['app/**/*.md', '!./app/_*/*'],
+             ['page.markdown', reload]);
+  gulp.watch(['app/**/*.ejs', '!./app/_*/*'],
+             ['page.ejs', reload]);
+  gulp.watch(['app/**/*.html', '!./app/_*/*'], [reload]);
+
+  gulp.watch(['app/_sitemap.xml.ejs'], ['page.index', 'sitemap', reload]);
 
   gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['lint', 'scripts', reload]);
@@ -345,9 +410,9 @@ gulp.task('default', ['clean'], cb =>
   runSequence(
     ['blog.archives'],
     ['blog.posts', 'blog.index', 'blog.tags', 'feed'],
-    ['styles', 'page.markdown', 'page.ejs'],
-    ['lint', 'scripts', 'vendorjs', 'images', 'copy', 'plain.html'],
-    ['html'],
+    ['styles', 'page.markdown', 'page.ejs', 'page.index'],
+    ['sitemap', 'lint', 'scripts', 'vendorjs', 'images', 'copy', 'plain.html'],
+    ['html', 'xml'],
     'generate-service-worker',
     cb
   )

@@ -8,7 +8,7 @@ var gutil = require('gulp-util');
 var fs = require('fs');
 var ejs = require('ejs');
 var marked = require('marked');
-var moment = require('moment');
+var moment = require('moment-timezone');
 var config = require('../conf');
 
 module.exports.archives = function(archiveName) {
@@ -140,6 +140,49 @@ module.exports.ejs = function(archiveData) {
   });
 }
 
+module.exports.pageIndex = function(indexName) {
+  var sitemapData = {
+    pages: [],
+  };
+
+  if (!indexName) {
+    throw new Error('a5-blog sitemap: Missing indexName option');
+  }
+
+  function bufferContents(file, enc, cb) {
+    // ignore empty files
+    if (file.isNull()) {
+      cb();
+      return;
+    }
+
+    if (file.isStream()) {
+      this.emit('error', new Error('a5-blog: Streaming not supported'));
+      cb();
+      return;
+    }
+
+    var page = myFrontMatter(file);
+    page.url = '/' + file.relative.replace(/\.(html\.ejs|md)$/, '.html');
+    page.url = page.url.replace(/index\.html$/, '');
+
+    sitemapData.pages.push(page)
+    cb();
+  }
+
+  function endStream(cb) {
+    var dataPath = indexName;
+    var dataFile = new File({
+      path: dataPath,
+      contents: new Buffer(JSON.stringify(sitemapData))
+    });
+    this.push(dataFile);
+    cb();
+  }
+
+  return through.obj(bufferContents, endStream);
+}
+
 function myFrontMatter(file) {
   var page = JSON.parse(JSON.stringify(file.frontMatter || {}));
   if (typeof page.layout === 'undefined') {
@@ -159,8 +202,13 @@ function buildEjsRenderData(archiveData, file) {
       asset_path: function(path) {
         return path;
       },
-      formatDate: function(date, format) {
-        return moment(new Date(date)).format(format);
+      formatDate: function(date, format, timezone) {
+        var d = moment(new Date(date));
+        if (!timezone) {
+          timezone = config.timezone;
+        }
+        d = d.tz(timezone);
+        return d.format(format);
       }
   };
   if (!data.site.title) {
@@ -188,6 +236,15 @@ function buildEjsRenderData(archiveData, file) {
         stag.posts.push(post);
       });
     });
+    if (archiveData.pages) {
+      data.site.pages = [];
+      archiveData.pages.forEach((page) => {
+        if (page.sitemap == false) {
+          return;
+        }
+        data.site.pages.push(page);
+      });
+    }
   }
   return data;
 }
