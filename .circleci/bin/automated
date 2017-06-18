@@ -18,31 +18,32 @@ fi
 
 echo "Started deploying"
 
-# Checkout master branch.
-mkdir -p dist
-cd dist
-cp -ar ../.git .
-find . -maxdepth 1 ! -name '.' ! -name '.git' -exec rm -rf {} \;
-git reset --hard
-git checkout master
-find . -maxdepth 1 ! -name '.' ! -name '.git' -exec rm -rf {} \;
-cd ..
-
 # Setup npm.
 npm install
 
 # Build site.
 gulp
 
-# Push to master.
-cd dist
-if [ $CIRCLE_PROJECT_REPONAME != "altus5.github.io.git" ]; then
+# Checkout master branch.
+mkdir -p .target
+cd .target
+cp -ar ../.git .
+git reset --hard
+git checkout master
+find . -maxdepth 1 ! -name '.' ! -name '.git' -exec rm -rf {} \;
+cp -prf ../dist/* .
+if [ "$CIRCLE_PROJECT_REPONAME" != "altus5.github.io.git" ]; then
+  echo "remove CNAME"
+  env
   rm -f CNAME
 else
+  echo "deploy production"
   ls
+  git status
 fi
+
+# Push to master.
 git add -fA
-git status
 git commit --allow-empty -m "$(git log -1 --pretty=%B) [ci skip]"
 git push -f $ORIGIN_URL master
 
