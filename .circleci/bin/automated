@@ -8,21 +8,15 @@ set -e
 # Variables
 ORIGIN_URL=`git config --get remote.origin.url`
 
-IS_PROD=0
 if [ $CIRCLE_PROJECT_REPONAME = "altus5.github.io.git" ]; then
-  IS_PROD=1
-fi
-
-echo "Started deploying"
-
-if [ $IS_PROD = "1" ]; then
   git config user.name "$USER_NAME"
   git config user.email "$USER_EMAIL"
 else
   git config user.name "$STAGING_USER_NAME"
   git config user.email "$STAGING_USER_EMAIL"
 fi
-git config -l
+
+echo "Started deploying"
 
 # Checkout master branch.
 mkdir -p dist
@@ -42,9 +36,7 @@ gulp
 
 # Push to master.
 cd dist
-if [ $IS_PROD != "1" ]; then
-  echo "remove CNAME"
-  env
+if [ $CIRCLE_PROJECT_REPONAME != "altus5.github.io.git" ]; then
   rm -f CNAME
 else
   ls
