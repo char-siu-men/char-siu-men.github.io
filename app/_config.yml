@@ -1,31 +1,3 @@
-baseurl:
-
-ga_analytics: # Add Google Analytics tracking code
-
 name: ALTUS-FIVE
-
-permalink: pretty
-
 url: "https://www.altus5.co.jp"
-
-sitemap:
-  file: "/sitemap.xml"
-  exclude:
-    - "/atom.xml"
-    - "/feed.xml"
-    - "/feed/index.xml"
-  include_posts:
-    - "/index.html"
-  change_frequency_name: "daily"
-  priority_name: "0.5"
-
-archives:
-  enabled:
-    - tags
-  layout: 'archive'
-  permalinks:
-    year: '/blog/:year/'
-    month: '/blog/:year/:month/'
-    day: '/blog/:year/:month/:day/'
-    tag: '/blog/tag/:name/'
-    category: '/blog/category/:name/'
+permalink: pretty
