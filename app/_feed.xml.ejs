@@ -17,8 +17,8 @@ layout: null
         <pubDate>
           <%= formatDate(post.date, 'ddd, DD MMM YYYY HH:mm:ss Z') %>
         </pubDate>
-        <link><%= site.url + '/' + post.url %></link>
-        <guid isPermaLink="true"><%= site.url + '/' + post.url %></guid>
+        <link><%- site.url + post.url %></link>
+        <guid isPermaLink="true"><%- site.url + post.url %></guid>
       </item>
       <%
     });
